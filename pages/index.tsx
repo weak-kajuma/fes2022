@@ -12,7 +12,11 @@ interface product {
   url: string
   title: string
   author: string
-  image: string
+  image: {
+    url: string
+    height: number
+    width: number
+  }
 }
 
 const shuffleArray = (array: any) => {
@@ -45,8 +49,9 @@ const Home: NextPage<any> = ({ data }) => {
       <div className={styles.main}>
         {data.map((product: product) => {
           return (
-            <div key={product.id}>
+            <div key={product.id} className={styles.product}>
               <a href={product.url}>
+                <img src={product.image.url} className={styles.image} />
                 <h2>{product.title}</h2>
                 <p className={styles.author}>Made by {product.author}</p>
               </a>
