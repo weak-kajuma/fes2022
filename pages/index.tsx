@@ -29,9 +29,8 @@ const shuffleArray = (array: any) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await client.get({endpoint: 'fes2022',queries: {offset: 0,limit: 100}})
-  const products = res.contents
-  console.log(products)
+  const res = await client.get({endpoint: 'fes2022',queries: {offset: 0,limit:100}})
+  const products = shuffleArray(res.contents)
   return {
     props: {
       data: products
