@@ -33,7 +33,7 @@ const shuffleArray = (array: any) => {
 }
 
 export const getServerSideProps: GetServerSideProps = async () => {
-  const res = await client.get({endpoint: 'fes2022',queries: {offset: 0,limit:100}})
+  const res = await client.get({endpoint: 'fes2024',queries: {offset: 0,limit:100}})
   const products = shuffleArray(res.contents)
   return {
     props: {
@@ -43,6 +43,7 @@ export const getServerSideProps: GetServerSideProps = async () => {
 }
 
 const Home: NextPage<any> = ({ data }) => {
+  console.log(data)
   return (
     <div>
       <h1 className={styles.title}>作品一覧</h1>
